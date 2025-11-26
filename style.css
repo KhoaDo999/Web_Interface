@@ -306,4 +306,163 @@ body.dark-mode .dark-toggle {
         padding: 6px 12px;
         font-size: 12px;
     }
+
+    /* FIX CHO IPHONE/MOBILE */
+    @media (max-width: 480px) {
+        .main {
+            padding: 10px;
+            max-width: 100%;
+        }
+
+        .dashboard-container {
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .chart-section,
+        .stats-section {
+            flex: none;
+            width: 100%;
+        }
+
+        .chart-container {
+            min-height: 250px;
+        }
+
+        .chart-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .chart-controls {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .chart-controls select {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        /* Fix header cho mobile */
+        header {
+            height: auto;
+            min-height: 120px;
+            padding: 15px 0;
+        }
+
+        header h1 {
+            font-size: 24px;
+            padding: 0 60px;
+        }
+
+        header h2 {
+            font-size: 14px;
+            padding: 0 60px;
+        }
+
+        .logo-left {
+            left: 15px;
+            height: 60px;
+        }
+
+        .dark-toggle {
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        /* Fix thống kê */
+        .dashboard-summary {
+            gap: 10px;
+        }
+
+        .summary-card {
+            padding: 15px;
+        }
+
+        .summary-card h3 {
+            font-size: 14px;
+        }
+
+        .summary-card p {
+            font-size: 20px;
+        }
+
+        /* Fix lịch sử */
+        .history-section {
+            padding: 15px;
+        }
+
+        .alert-list {
+            max-height: 300px;
+        }
+
+        .alert-item {
+            padding: 10px 12px;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .alert-item p {
+            font-size: 14px;
+        }
+
+        .alert-item .time {
+            font-size: 12px;
+            align-self: flex-end;
+        }
+    }
+
+    /* THÊM CHO IPHONE SPECIFIC */
+    @supports (-webkit-touch-callout: none) {
+        .alert-list {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        select {
+            appearance: none;
+            border-radius: 8px;
+            padding: 8px 35px 8px 12px;
+            background: var(--select-bg, white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666'%3E%3Cpath d='M6 8L2 4h8z'/%3E%3C/svg%3E") no-repeat right 12px center;
+        }
+
+        body.dark-mode select {
+            --select-bg: #2d2d3d;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23eaeaea'%3E%3Cpath d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+        }
+    }
+
+    /* ĐẢM BẢO VIEWPORT ĐÚNG */
+    @media screen and (max-width: 768px) {
+        body {
+            font-size: 14px;
+        }
+
+        .main {
+            overflow-x: hidden;
+        }
+    }
+
+    /* FIX CHIỀU CAO TỐI THIỂU CHO CÁC PHẦN TỬ */
+    .chart-container {
+        min-height: 250px;
+    }
+
+    .alert-list {
+        min-height: 200px;
+    }
+
+    /* ĐẢM BẢO KHÔNG CÓ OVERFLOW */
+    * {
+        max-width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 }
