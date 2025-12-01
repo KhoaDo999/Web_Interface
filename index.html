@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Phát Hiện Tài Xế Buồn Ngủ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="./logo/Logo_UTE.png" alt="Logo" class="logo-left">
+        <h1>Lịch Sử Phát Hiện Tài Xế Buồn Ngủ</h1>
+        <h2>Warning History</h2>
+        <button class="dark-toggle" id="dark-mode-toggle">Dark Mode</button>
+    </header>
+
+    <div class="main">
+        <!-- BỐ CỤC 4/6 - BIỂU ĐỒ VÀ THỐNG KÊ NẰM NGANG -->
+        <div class="dashboard-container">
+            <!-- PHẦN BIỂU ĐỒ - 40% -->
+            <section class="chart-section">
+                <div class="chart-header">
+                    <h3 class="chart-title">Biểu đồ Cảnh báo</h3>
+                    <div class="chart-controls">
+                        <select id="timeRange">
+                            <option value="7">7 ngày</option>
+                            <option value="30">30 ngày</option>
+                            <option value="90">3 tháng</option>
+                        </select>
+                        <select id="chartType">
+                            <option value="line">Đường</option>
+                            <option value="bar">Cột</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="alertChart"></canvas>
+                </div>
+            </section>
+
+            <!-- PHẦN THỐNG KÊ - 60% -->
+            <div class="stats-section">
+                <div class="dashboard-summary">
+                    <div class="summary-card">
+                        <h3>Lần cảnh báo gần nhất</h3>
+                        <p id="last-warning">--</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Tổng cảnh báo hôm nay</h3>
+                        <p id="today-count">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Tổng cảnh báo trong tuần</h3>
+                        <p id="week-count">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LỊCH SỬ CẢNH BÁO - TOÀN BỘ CHIỀU RỘNG -->
+        <section class="history-section">
+            <div class="history-header">
+                <h3 class="history-title">Lịch sử Cảnh báo</h3>
+                <button class="clear-btn" id="clearBtn">Xóa lịch sử</button>
+            </div>
+            <div class="alert-list" id="alertList">
+                <!-- Danh sách cảnh báo sẽ được thêm vào đây -->
+            </div>
+        </section>
+
+    </div>
+    <!-- THÊM POPUP VÀO ĐÂY -->
+    <div class="alert-popup" id="alertPopup">
+        <div class="alert-box">
+            <button class="close-btn" id="closeAlert">×</button>
+            <div class="alert-content">
+                <div class="alert-icon">⚠️</div>
+                <h3>CẢNH BÁO</h3>
+                <p>Phát hiện tài xế có dấu hiệu buồn ngủ!</p>
+                <p class="alert-time" id="alertTime">--:--:--</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
